@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:gravity="center"
+		android:text="跑马灯效果，点击暂停，再点击恢复" />
+
+	<TextView
+		android:id="@+id/tv_marquee"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		android:singleLine="true"
+		android:ellipsize="marquee"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:textColor="@color/black"
+		android:textSize="17sp"
+		android:text="快讯：红色预警，超强台风“泰利”即将登陆，请居民关紧门窗、备足粮油，做好防汛救灾准备！" />
+</LinearLayout>

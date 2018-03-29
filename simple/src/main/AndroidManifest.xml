@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.simple">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ButtonClickActivity" />
+        <activity android:name=".CheckboxActivity" />
+        <activity android:name=".RadioButtonActivity" />
+        <activity android:name=".LinearLayoutActivity" />
+        <activity android:name=".RelativeLayoutActivity" />
+        <activity android:name=".ConstraintLayoutActivity" />
+        <activity android:name=".TextMarqueeActivity" />
+        <activity android:name=".ImageScaleActivity" />
+        <activity android:name=".EditTextActivity" />
+        <activity android:name=".ActFirstActivity" />
+        <activity android:name=".ActSecondActivity" />
+        <activity android:name=".ParcelableFirstActivity" />
+        <activity android:name=".ParcelableSecondActivity" />
+        <activity android:name=".ActRequestActivity" />
+        <activity android:name=".ActResponseActivity" />
+        <activity android:name=".AlertDialogActivity" />
+        <activity android:name=".LoginPageActivity" />
+        <activity android:name=".LoginForgetActivity" />
+    </application>
+
+</manifest>

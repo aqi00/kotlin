@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_light"
+        app:navigationIcon="@drawable/ic_back" />
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.example.custom.widget.RoundLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="美味螃蟹"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <com.example.custom.widget.NoScrollListView
+                    android:id="@+id/nslv_crab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="1dp" />
+            </com.example.custom.widget.RoundLayout>
+            
+            <com.example.custom.widget.RoundLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="鲜活大虾"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <com.example.custom.widget.NoScrollListView
+                    android:id="@+id/nslv_shrimp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="1dp" />
+            </com.example.custom.widget.RoundLayout>
+            
+            <com.example.custom.widget.RoundLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp"
+                android:padding="10dp" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="年年有鱼"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <com.example.custom.widget.NoScrollListView
+                    android:id="@+id/nslv_fish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:dividerHeight="1dp" />
+            </com.example.custom.widget.RoundLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

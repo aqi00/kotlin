@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp" >
+
+        <Button
+            android:id="@+id/btn_add_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="添加控件"
+            android:textSize="17sp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btn_move_hard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="僵硬移动"
+            android:textSize="17sp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btn_move_soft"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="柔和移动"
+            android:textSize="17sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="200dp"
+        android:background="@color/blue"
+        android:text="我是山大王"
+        android:textSize="17sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_first"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_first"
+        android:background="@color/blue"
+        android:text="我是巡山的小喽啰"
+        android:textSize="17sp"
+        android:textColor="@color/black" />
+</android.support.constraint.ConstraintLayout>

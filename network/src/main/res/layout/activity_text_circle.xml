@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp" >
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="请选择进度值 "
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <Spinner
+            android:id="@+id/sp_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tv_progress"
+            android:gravity="left|center"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:id="@+id/tv_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tv_progress"
+            android:gravity="center"
+            android:drawableRight="@drawable/arrow_down"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+    
+    <com.example.network.widget.TextProgressCircle
+        android:id="@+id/tpc_progress"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
+    
+</LinearLayout>

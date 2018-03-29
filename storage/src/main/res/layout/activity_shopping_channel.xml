@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffdd"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_custom" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_channel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="2dp"
+        android:background="@color/orange_light" />
+    
+</LinearLayout>

@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/editext_selector"
+        android:hint="请输入消息标题"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/editext_selector"
+        android:hint="请输入消息内容"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+    
+    <Spinner
+        android:id="@+id/sp_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="left|center"
+        android:spinnerMode="dialog" />
+
+    <TextView
+        android:id="@+id/tv_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:drawableRight="@drawable/arrow_down"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_send_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="发送大视图消息"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+</LinearLayout>

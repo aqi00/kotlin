@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <com.example.custom.widget.RoundLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="入群须知"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <com.example.custom.widget.RoundTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="新入群的朋友请注意，入群时先向大家问好，然后自报姓名、性别、年龄、身高、体重、职业，最重要的一点是：自己上传照片！"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+    </com.example.custom.widget.RoundLayout>
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.network">
+
+    <!-- 互联网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 查看网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 查看手机状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 下载时不提示通知栏 -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <!-- SD卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!-- 联系人 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 短信 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <!-- 通话记录 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <!-- 读取电话状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".ProgressDialogActivity" />
+        <activity android:name=".ProgressCircleActivity" />
+        <activity android:name=".AsyncTaskActivity" />
+        <activity android:name=".JsonParseActivity" />
+        <activity android:name=".JsonConvertActivity" />
+        <activity android:name=".HttpRequestActivity" />
+        <activity android:name=".HttpImageActivity" />
+        <activity android:name=".DownloadApkActivity" />
+        <activity android:name=".DownloadImageActivity" />
+        <activity android:name=".ContentProviderActivity" />
+        <activity android:name=".ContentResolverActivity" />
+        <activity android:name=".ContentObserverActivity" />
+        <activity android:name=".SpannableActivity" />
+        <activity
+            android:name=".AutoUpdateActivity"
+            android:theme="@style/AppCompatTheme" />
+
+        <!-- 注册下载完成事件的广播接收器 -->
+        <receiver android:name=".DownloadApkActivity$DownloadCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+        <!-- 注册下载通知栏点击事件的广播接收器 -->
+        <receiver android:name=".DownloadApkActivity$NotificationClickReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 注册用户信息的内容提供器 -->
+        <provider
+            android:name=".provider.UserInfoProvider"
+            android:authorities="com.example.network.provider.UserInfoProvider"
+            android:enabled="true"
+            android:exported="true" />
+
+    </application>
+
+</manifest>
