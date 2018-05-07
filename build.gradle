@@ -16,7 +16,7 @@ buildscript {
 }
 
 ext {
-    supportVersion = "27.0.0"
+    supportVersion = "27.1.1"
 }
 
 allprojects {
