@@ -10,10 +10,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Binder
-import android.os.Handler
-import android.os.IBinder
-import android.os.SystemClock
+import android.os.*
 import android.util.Log
 import android.widget.RemoteViews
 import org.jetbrains.anko.intentFor
@@ -72,7 +69,11 @@ class MusicService : Service() {
         val intent = ctx.intentFor<MainActivity>()
         val cIntent = PendingIntent.getActivity(ctx,
                 R.string.app_name, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val builder = Notification.Builder(ctx)
+        var builder = Notification.Builder(ctx)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         return builder.setContentIntent(cIntent)
                 .setContent(notify_music)
                 .setTicker(song)

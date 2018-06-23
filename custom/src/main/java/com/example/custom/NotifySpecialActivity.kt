@@ -1,5 +1,6 @@
 package com.example.custom
 
+import android.annotation.TargetApi
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -65,7 +66,11 @@ class NotifySpecialActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建进度通知的各个参数
-        val builder = Notification.Builder(this)
+        var builder = Notification.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_app)
@@ -87,7 +92,11 @@ class NotifySpecialActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建浮动通知的各个参数
-        val builder = Notification.Builder(this)
+        var builder = Notification.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_app)
@@ -103,6 +112,7 @@ class NotifySpecialActivity : AppCompatActivity() {
         notifyMgr.notify(R.string.app_name, notify)
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun sendLockNotify(title: String, message: String, visibile: Boolean) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             toast("锁屏通知需要5.0以上系统支持。")
@@ -114,7 +124,11 @@ class NotifySpecialActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建锁屏通知的各个参数
-        val builder = Notification.Builder(this)
+        var builder = Notification.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_app)

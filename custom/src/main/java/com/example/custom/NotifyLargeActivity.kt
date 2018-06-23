@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
@@ -76,7 +77,11 @@ class NotifyLargeActivity : AppCompatActivity() {
         val piConfirm = PendingIntent.getActivity(this,
                 R.string.app_name, confirmIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //大视图通知需要通过NotificationCompat.Builder来构建
-        val builder = NotificationCompat.Builder(this)
+        var builder = NotificationCompat.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = NotificationCompat.Builder(this, getString(R.string.app_name))
+        }
         builder.setSmallIcon(R.drawable.ic_app)
                 .setTicker("大视图消息来啦")
                 .setWhen(System.currentTimeMillis())

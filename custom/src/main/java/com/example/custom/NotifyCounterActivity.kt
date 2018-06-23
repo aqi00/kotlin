@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_notify_counter.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import android.os.Build
+
+
 
 /**
  * Created by ouyangshen on 2017/9/17.
@@ -35,7 +38,11 @@ class NotifyCounterActivity : AppCompatActivity() {
         val piDelete = PendingIntent.getActivity(this,
                 R.string.app_name, cancelIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建计时消息的各个参数
-        val builder = Notification.Builder(this)
+        var builder = Notification.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         val notify = builder.setDeleteIntent(piDelete)
                 .setAutoCancel(true)
                 .setUsesChronometer(true)

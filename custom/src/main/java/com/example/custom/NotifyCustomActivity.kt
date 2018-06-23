@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
@@ -44,7 +45,11 @@ class NotifyCustomActivity : AppCompatActivity() {
         val intent = ctx.intentFor<MainActivity>()
         val contentIntent = PendingIntent.getActivity(ctx,
                 R.string.app_name, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val builder = Notification.Builder(ctx)
+        var builder = Notification.Builder(ctx)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         builder.setContentIntent(contentIntent)
                 .setContent(contentView) //采用自定义的通知布局
                 .setTicker(song)

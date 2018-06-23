@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -34,7 +35,11 @@ class NotifySimpleActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建简单消息的各个参数
-        val builder = Notification.Builder(this)
+        var builder = Notification.Builder(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8.0开始必须给每个通知分配对应的渠道
+            builder = Notification.Builder(this, getString(R.string.app_name))
+        }
         val notify = builder.setContentIntent(piClick)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_app)

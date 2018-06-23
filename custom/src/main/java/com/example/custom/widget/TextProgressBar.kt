@@ -7,15 +7,17 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.widget.ProgressBar
+import org.jetbrains.anko.dip
 
 //自定义视图务必要在类名后面增加“@JvmOverloads constructor”，因为布局文件中的自定义视图必须兼容Java
 class TextProgressBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : ProgressBar(context, attrs, defStyle) {
     var progressText = ""
     private var paint: Paint
     private var textColor = Color.WHITE
-    private var textSize = 30f
+    private var textSize: Float
 
     init {
+        textSize = context.dip(15).toFloat()
         //初始化画笔
         paint = Paint()
         paint.color = textColor
