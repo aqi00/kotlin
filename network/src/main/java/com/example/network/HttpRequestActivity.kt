@@ -1,5 +1,7 @@
 package com.example.network
 
+import android.Manifest
+import android.content.pm.PackageManager
 import com.example.network.util.DateUtil
 import com.example.network.util.locator
 import com.example.network.util.criteria
@@ -8,10 +10,12 @@ import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
 import android.os.Handler
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_http_request.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import java.net.URL
@@ -79,6 +83,12 @@ class HttpRequestActivity : AppCompatActivity() {
     }
 
     private fun beginLocation(method: String) {
+        // 检查当前设备是否已经开启了定位功能
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            toast("请授予定位权限并开启定位功能")
+            return;
+        }
         locator.requestLocationUpdates(method, 300, 0f, mLocationListener)
         val location = locator.getLastKnownLocation(method)
         setLocationText(location)

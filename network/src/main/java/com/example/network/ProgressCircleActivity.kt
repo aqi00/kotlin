@@ -23,7 +23,7 @@ class ProgressCircleActivity : AppCompatActivity() {
         tv_spinner.setOnClickListener {
             selector("请选择进度值", progresses) { i ->
                 tv_spinner.text = progresses[i]
-                tpc_progress.setProgress(progresses[i].toInt(), 50f)
+                tpc_progress.setProgress(progresses[i].toInt(), 40f)
             }
         }
     }

@@ -74,7 +74,7 @@ class DownloadImageActivity : AppCompatActivity() {
     private val handler = Handler()
     private val mRefresh = object : Runnable {
         override fun run() {
-            var bFinish = false
+            var isFinished = false
             val down_query = Query()
             //根据编号来过滤下载任务
             down_query.setFilterById(downloadId)
@@ -97,22 +97,24 @@ class DownloadImageActivity : AppCompatActivity() {
                     break
                 }
                 //设置文本进度圈的当前进度
-                tpc_progress.setProgress(progress, 100f)
+                tpc_progress.setProgress(progress, 50f)
                 imagePath = cursor.getString(uriIdx)
+                //下载进度达到100%，表示下载完成
+                if (progress >= 100) {
+                    isFinished = true
+                }
+                var statusDesc = if (isFinished) statusMap[DownloadManager.STATUS_SUCCESSFUL]
+                                    else statusMap[cursor.getInt(statusIdx)]
                 tv_image_result.text = "文件路径：${cursor.getString(uriIdx)}\n" +
                         "媒体类型：${cursor.getString(mediaTypeIdx)}\n" +
                         "文件总大小：${cursor.getLong(totalSizeIdx)}\n" +
                         "已下载大小：${cursor.getLong(nowSizeIdx)}\n" +
                         "下载进度：$progress%%\n" +
-                        "下载状态：${statusMap[cursor.getInt(statusIdx)]}\n"
-                //下载进度达到100%，表示下载完成
-                if (progress >= 100) {
-                    bFinish = true
-                }
+                        "下载状态：$statusDesc\n"
             }
             cursor.close()
             //尚未完成下载，继续轮询下载进度
-            if (!bFinish) {
+            if (!isFinished) {
                 handler.postDelayed(this, 100)
             } else {
                 tv_spinner.isEnabled = true

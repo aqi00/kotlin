@@ -9,6 +9,7 @@ import android.graphics.Paint.Style
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import org.jetbrains.anko.dip
 
 //自定义视图务必要在类名后面增加“@JvmOverloads constructor”，因为布局文件中的自定义视图必须兼容Java
 class TextProgressCircle @JvmOverloads constructor(private val mContext: Context, attr: AttributeSet? = null) : View(mContext, attr) {
@@ -17,11 +18,12 @@ class TextProgressCircle @JvmOverloads constructor(private val mContext: Context
     private val paintText: Paint = Paint()
     private var lineWidth = 10
     private var lineColor = Color.GREEN
-    private var mTextSize = 50.0f
+    private var mTextSize: Float
     private lateinit var mRect: RectF
     private var mProgress = 0
 
     init {
+        mTextSize = context.dip(40).toFloat()
         //初始化背景画笔的相关属性
         paintBack.isAntiAlias = true
         paintBack.color = Color.LTGRAY
@@ -67,7 +69,7 @@ class TextProgressCircle @JvmOverloads constructor(private val mContext: Context
     fun setProgress(progress: Int, textSize: Float) {
         mProgress = progress
         if (textSize > 0) {
-            mTextSize = textSize
+            mTextSize = context.dip(textSize).toFloat()
             paintText.textSize = mTextSize
         }
         invalidate()

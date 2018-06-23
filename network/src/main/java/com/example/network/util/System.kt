@@ -1,5 +1,6 @@
 package com.example.network.util
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.DownloadManager
 import android.app.NotificationManager
@@ -35,6 +36,7 @@ val Context.telephone: TelephonyManager
     get() = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 //获取无线管理器
 val Context.wifi: WifiManager
+    @SuppressLint("WifiManagerLeak")
     get() = getSystemService(Context.WIFI_SERVICE) as WifiManager
 //获取闹钟管理器
 val Context.alarm: AlarmManager
