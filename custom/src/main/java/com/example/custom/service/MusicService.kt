@@ -29,14 +29,14 @@ class MusicService : Service() {
 
     private var mSong: String = ""
     private var PAUSE_EVENT = ""
-    private var isPlay = true
+    private var isPlaying = true
     private var mBaseTime: Long = 0
     private var mPauseTime: Long = 0
     private var mProgress = 0
     private val handler = Handler()
     private val playTask = object : Runnable {
         override fun run() {
-            if (isPlay) {
+            if (isPlaying) {
                 if (mProgress < 100) {
                     mProgress += 2
                 } else {
@@ -44,18 +44,18 @@ class MusicService : Service() {
                 }
                 handler.postDelayed(this, 1000)
             }
-            val notify = getNotify(this@MusicService, PAUSE_EVENT, mSong, isPlay, mProgress, mBaseTime)
+            val notify = getNotify(this@MusicService, PAUSE_EVENT, mSong, isPlaying, mProgress, mBaseTime)
             //持续刷新通知栏上的播放进度
             startForeground(2, notify)
         }
     }
 
-    private fun getNotify(ctx: Context, event: String, song: String, isPlay: Boolean, progress: Int, time: Long): Notification {
+    private fun getNotify(ctx: Context, event: String, song: String, isPlaying: Boolean, progress: Int, time: Long): Notification {
         val pIntent = Intent(event)
         val nIntent = PendingIntent.getBroadcast(ctx,
                 R.string.app_name, pIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notify_music = RemoteViews(ctx.packageName, R.layout.notify_music)
-        if (isPlay) {
+        if (isPlaying) {
             notify_music.setTextViewText(R.id.btn_play, "暂停")
             notify_music.setTextViewText(R.id.tv_play, "${song}正在播放")
             notify_music.setChronometer(R.id.chr_play, time, "%s", true)
@@ -82,7 +82,7 @@ class MusicService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startid: Int): Int {
         mBaseTime = SystemClock.elapsedRealtime()
-        isPlay = intent.getBooleanExtra("is_play", true)
+        isPlaying = intent.getBooleanExtra("is_play", true)
         mSong = intent.getStringExtra("song")
         handler.postDelayed(playTask, 200)
         return Service.START_STICKY
@@ -105,8 +105,8 @@ class MusicService : Service() {
     inner class PauseReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
-                isPlay = !isPlay
-                if (isPlay) {
+                isPlaying = !isPlaying
+                if (isPlaying) {
                     handler.postDelayed(playTask, 200)
                     if (mPauseTime > 0) {
                         val gap = SystemClock.elapsedRealtime() - mPauseTime
