@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- ConstraintLayout下面的每个视图都必须分配id，否则在克隆时会报错“All children of ConstraintLayout must have ids to use ConstraintSet” -->
     <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
