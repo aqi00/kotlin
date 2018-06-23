@@ -3,6 +3,8 @@
 buildscript {
     ext.kotlin_version = "1.2.0"
     ext.anko_version = "0.9"
+    //使用0.10.5的Anko库，注意selector方法要带两个参数
+    //ext.anko_version = "0.10.5"
     repositories {
         jcenter()
     }
