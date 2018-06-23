@@ -42,11 +42,11 @@ class SQLiteWriteActivity : AppCompatActivity() {
                 et_weight.text.isEmpty() -> toast("请先填写体重")
                 else -> {
                     val info = UserInfo(name = et_name.text.toString(),
-                    age = et_age.text.toString().toInt(),
-                    height = et_height.text.toString().toLong(),
-                    weight = et_weight.text.toString().toFloat(),
-                    married = bMarried,
-                    update_time = DateUtil.nowDateTime)
+                                    age = et_age.text.toString().toInt(),
+                                    height = et_height.text.toString().toLong(),
+                                    weight = et_weight.text.toString().toFloat(),
+                                    married = bMarried,
+                                    update_time = DateUtil.nowDateTime)
                     mHelper.insert(info)
                     toast("数据已写入SQLite数据库")
                 }
