@@ -10,6 +10,7 @@ import com.example.complex.adapter.PlanetGridAdapter
 import com.example.complex.bean.Planet
 
 import kotlinx.android.synthetic.main.activity_grid_view.*
+import org.jetbrains.anko.dip
 import org.jetbrains.anko.selector
 
 /**
@@ -23,7 +24,6 @@ class GridViewActivity : AppCompatActivity() {
             "只显示内部分隔线(STRETCH_SPACING)",
             "只显示内部分隔线(SPACING_UNIFORM)",
             "显示全部分隔线(看我用padding大法)")
-    private val dividerPad = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,7 @@ class GridViewActivity : AppCompatActivity() {
         gv_planet.onItemClickListener = adapter
         gv_planet.onItemLongClickListener = adapter
 
+        val dividerPad = dip(2)
         sp_grid.visibility = View.GONE
         tv_spinner.visibility = View.VISIBLE
         tv_spinner.text = dividers[0]
