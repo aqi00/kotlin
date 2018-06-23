@@ -1,5 +1,6 @@
 package com.example.grammar
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -68,12 +69,15 @@ class MapOfActivity : AppCompatActivity() {
         }
 
         btn_map_foreach.setOnClickListener {
-            //var desc = ""
-            ////映射的forEach函数需要API24及以上版本支持
-            ////forEach内部使用key指代每条记录的键，使用value指代每条记录的值
-            //goodsMap.forEach { key, value -> desc = "${desc}厂家：${key}，名称：${value}\n" }
-            //tv_map_result.text = "手机畅销榜包含以下${goodsMutMap.size}款手机：\n$desc"
-            tv_map_result.text = "Map的forEach函数需要API24及以上版本支持"
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                var desc = ""
+                //映射的forEach函数需要API24及以上版本支持
+                //forEach内部使用key指代每条记录的键，使用value指代每条记录的值
+                goodsMutMap.forEach { key, value -> desc = "${desc}厂家：${key}，名称：${value}\n" }
+                tv_map_result.text = "手机畅销榜包含以下${goodsMutMap.size}款手机：\n$desc"
+            } else {
+                tv_map_result.text = "Map的forEach函数需要API24及以上版本支持"
+            }
         }
     }
 
