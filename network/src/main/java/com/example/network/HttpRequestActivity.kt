@@ -28,13 +28,20 @@ class HttpRequestActivity : AppCompatActivity() {
     private var mLocation = ""
     private val handler = Handler()
     private var bLocationEnable = false
-    private val mapsUrl = "http://maps.google.cn/maps/api/geocode/json?latlng={0},{1}&sensor=true&language=zh-CN"
+    // 谷歌地图从2019年开始必须传入密钥才能根据经纬度获取地址，所以把查询接口改成了国内的天地图
+    //private val mapsUrl = "http://maps.google.cn/maps/api/geocode/json?latlng={0},{1}&sensor=true&language=zh-CN"
+    private val mapsUrl = "http://api.tianditu.gov.cn/geocoder?postStr={'lon':%f,'lat':%f,'ver':1}&type=geocode&tk=145897399844a50e3de2309513c8df4b"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_http_request)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        handler.removeCallbacks(mRefresh) // 移除定位刷新任务
         initLocation()
-        handler.postDelayed(mRefresh, 100)
+        handler.postDelayed(mRefresh, 100) // 延迟100毫秒启动定位刷新任务
     }
 
     private fun initLocation() {
@@ -64,16 +71,14 @@ class HttpRequestActivity : AppCompatActivity() {
         if (location != null) {
             doAsync {
                 //根据经纬度数据从谷歌地图获取详细地址信息
-                val url = MessageFormat.format(mapsUrl, location.latitude, location.longitude)
+                //val url = MessageFormat.format(mapsUrl, location.latitude, location.longitude)
+                //根据经纬度数据从天地图获取详细地址信息
+                val url = String.format(mapsUrl, location.longitude, location.latitude)
                 val text = URL(url).readText()
                 val obj = JSONObject(text)
-                val resultArray = obj.getJSONArray("results")
-                var address = ""
                 //解析json字符串，其中formatted_address字段为具体地址名称
-                if (resultArray.length() > 0) {
-                    val resultObj = resultArray.getJSONObject(0)
-                    address = resultObj.getString("formatted_address")
-                }
+                val result = obj.getJSONObject("result")
+                var address = result.getString("formatted_address");
                 //获得该地点的详细地址之后，回到主线程把地址显示在界面上
                 uiThread { findAddress(location, address) }
             }
