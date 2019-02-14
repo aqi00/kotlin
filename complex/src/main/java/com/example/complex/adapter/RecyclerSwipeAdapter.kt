@@ -26,7 +26,7 @@ class RecyclerSwipeAdapter(context: Context, private val infos: MutableList<Recy
         vh.bind(infos[position], itemClickListener, itemLongClickListener, itemDeleteClickListener)
     }
 
-    class ItemHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(item: RecyclerInfo,
                  clickListener: RecyclerExtras.OnItemClickListener?,
                  longClickListener: RecyclerExtras.OnItemLongClickListener?,

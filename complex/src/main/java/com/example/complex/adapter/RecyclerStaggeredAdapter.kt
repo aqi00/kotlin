@@ -26,7 +26,7 @@ class RecyclerStaggeredAdapter(context: Context, private val infos: MutableList<
     }
 
     //注意这里要去掉inner，否则运行报错“java.lang.NoSuchMethodError: No virtual method _$_findCachedViewById”
-    class ItemHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(item: RecyclerInfo) {
             //因为运用了插件LayoutContainer，所以这里可以直接使用控件对象
             iv_pic.setImageResource(item.pic_id)

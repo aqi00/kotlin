@@ -24,7 +24,7 @@ class RecyclerLifeAdapter(context: Context, private val lifes: MutableList<LifeI
         (holder as ItemHolder).bind(lifes[position])
     }
 
-    class ItemHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(item: LifeItem) {
             iv_pic.setImageResource(item.pic_id)
             tv_title.text = item.title

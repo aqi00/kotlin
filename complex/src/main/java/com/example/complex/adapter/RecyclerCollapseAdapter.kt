@@ -24,7 +24,7 @@ class RecyclerCollapseAdapter(context: Context, private val titles: Array<String
         (holder as ItemHolder).bind(titles[position])
     }
 
-    class ItemHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(item: String) {
             tv_seq.text = "${position+1}"
             tv_title.text = item
