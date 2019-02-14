@@ -27,7 +27,7 @@ class RecyclerCartAdapter(context: Context, private val carts: MutableList<CartI
         vh.bind(carts[position], itemClickListener, itemLongClickListener)
     }
 
-    class ItemHolder(override val containerView: View?) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class ItemHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(item: CartInfo,
                  clickListener: RecyclerExtras.OnItemClickListener?,
                  longClickListener: RecyclerExtras.OnItemLongClickListener?) {
