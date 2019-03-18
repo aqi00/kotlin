@@ -57,7 +57,7 @@ class AutoUpdateActivity : AppCompatActivity() {
 
         btn_no_request.setOnClickListener {
             //测试使用爱奇艺的安装包，包名是com.qiyi.video
-            val result = "{\"app_name\":\"爱奇艺\",\"package_name\":\"com.qiyi.video\",\"version_code\":80930,\"version_name\":\"8.8.5\",\"need_update\":true,\"download_url\":\"http://www.lenovomm.com/appdown/21404091-2\"}"
+            val result = "{\"app_name\":\"爱奇艺\",\"package_name\":\"com.qiyi.video\",\"version_code\":100200,\"version_name\":\"10.2.0\",\"need_update\":true,\"download_url\":\"https://3g.lenovomm.com/w3g/yydownload/com.qiyi.video/60020\"}"
             checkUpdate(result)
         }
         btn_need_request.setOnClickListener {

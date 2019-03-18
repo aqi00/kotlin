@@ -14,7 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -31,6 +30,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.anko:anko-common:$anko_version"
     implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
+    //gson库的最新版本号在这里查看 http://www.mvnrepository.com/artifact/com.google.code.gson/gson
     implementation "com.google.code.gson:gson:2.8.5"
     testImplementation 'junit:junit:4.12'
 }

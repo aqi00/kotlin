@@ -18,7 +18,7 @@ import java.net.URL
  * Created by ouyangshen on 2017/9/24.
  */
 class HttpImageActivity : AppCompatActivity() {
-    private val imageUrl = "http://222.77.181.14/ValidateCode.aspx?r="
+    private val imageUrl = "http://yx12.fjjcjy.com/Public/Control/GetValidateCode?time="
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -28,16 +28,16 @@ class DownloadApkActivity : AppCompatActivity() {
             "支付宝", "微信", "手机QQ", "手机淘宝", "爱奇艺", 
             "酷狗音乐", "UC浏览器", "搜狗输入法", "微博", "手机京东")
     private val apkUrls = listOf(
-            "http://www.lenovomm.com/appdown/21410209-2",
-            "http://www.lenovomm.com/appdown/21389477-2",
-            "http://www.lenovomm.com/appdown/21381059-2",
-            "http://www.lenovomm.com/appdown/21404328-2",
-            "http://www.lenovomm.com/appdown/21404091-2",
-            "http://www.lenovomm.com/appdown/21393779-2",
-            "http://www.lenovomm.com/appdown/21409207-2",
-            "http://www.lenovomm.com/appdown/20986049-2",
-            "http://www.lenovomm.com/appdown/21419930-2",
-            "http://www.lenovomm.com/appdown/21388274-2")
+            "https://3g.lenovomm.com/w3g/yydownload/com.eg.android.AlipayGphone/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.tencent.mm/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.tencent.mobileqq/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.taobao.taobao/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.qiyi.video/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.kugou.android/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.UCMobile/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.sohu.inputmethod.sogou/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.sina.weibo/60020",
+            "https://3g.lenovomm.com/w3g/yydownload/com.jingdong.app.mall/60020")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
