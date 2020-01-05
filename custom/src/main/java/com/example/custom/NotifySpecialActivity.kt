@@ -2,6 +2,7 @@ package com.example.custom
 
 import android.annotation.TargetApi
 import android.app.Notification
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 
@@ -66,10 +68,10 @@ class NotifySpecialActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建进度通知的各个参数
-        var builder = Notification.Builder(this)
+        var builder = NotificationCompat.Builder(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Android 8.0开始必须给每个通知分配对应的渠道
-            builder = Notification.Builder(this, getString(R.string.app_name))
+            builder = NotificationCompat.Builder(this, getString(R.string.app_name))
         }
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
@@ -91,12 +93,17 @@ class NotifySpecialActivity : AppCompatActivity() {
         val clickIntent = intentFor<MainActivity>()
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        //获取系统的通知管理器
+        val notifyMgr = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         //开始构建浮动通知的各个参数
-        var builder = Notification.Builder(this)
+        var builder = NotificationCompat.Builder(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Android 8.0开始必须给每个通知分配对应的渠道
-            builder = Notification.Builder(this, getString(R.string.app_name))
+            builder = NotificationCompat.Builder(this, packageName)
+            var channel = NotificationChannel(packageName, getString(R.string.app_name), NotificationManager.IMPORTANCE_HIGH)
+            notifyMgr.createNotificationChannel(channel)
         }
+
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_app)
@@ -107,8 +114,6 @@ class NotifySpecialActivity : AppCompatActivity() {
                 .setContentText(message)
                 .setFullScreenIntent(piClick, true) //设置浮动窗的点击事件
         val notify = builder.build()
-        //获取系统的通知管理器
-        val notifyMgr = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notifyMgr.notify(R.string.app_name, notify)
     }
 
@@ -124,10 +129,10 @@ class NotifySpecialActivity : AppCompatActivity() {
         val piClick = PendingIntent.getActivity(this,
                 R.string.app_name, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         //开始构建锁屏通知的各个参数
-        var builder = Notification.Builder(this)
+        var builder = NotificationCompat.Builder(this)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Android 8.0开始必须给每个通知分配对应的渠道
-            builder = Notification.Builder(this, getString(R.string.app_name))
+            builder = NotificationCompat.Builder(this, getString(R.string.app_name))
         }
         builder.setContentIntent(piClick)
                 .setAutoCancel(true)
