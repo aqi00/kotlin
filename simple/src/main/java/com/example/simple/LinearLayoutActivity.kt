@@ -25,13 +25,13 @@ class LinearLayoutActivity : AppCompatActivity() {
             //Kotlin对变量进行类型转换的关键字是as
             val params = ll_margin.layoutParams as LinearLayout.LayoutParams
             //setMargins方法为设置该视图与外部视图的空白距离
-            //此处设置左边和右边的margin空白距离为50dp
+            //此处设置顶部和底部的margin空白距离为50dp
             params.setMargins(0, dip(50), 0, dip(50))
             ll_margin.layoutParams = params
         }
         btn_margin_horizontal.setOnClickListener {
             val params = ll_margin.layoutParams as LinearLayout.LayoutParams
-            //此处设置顶部和底部的margin空白距离为50dp
+            //此处设置左边和右边的margin空白距离为50dp
             params.setMargins(dip(50), 0, dip(50), 0)
             ll_margin.layoutParams = params
         }
