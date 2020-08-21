@@ -16,7 +16,7 @@ import android.widget.RemoteViews
 import org.jetbrains.anko.intentFor
 
 /**
- * Created by ouyangshen on 2016/10/14.
+ * Created by ouyangshen on 2017/10/14.
  */
 class MusicService : Service() {
     inner class LocalBinder : Binder() {

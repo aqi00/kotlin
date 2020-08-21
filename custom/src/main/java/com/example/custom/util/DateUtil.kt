@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 /**
- * Created by ouyangshen on 2016/9/24.
+ * Created by ouyangshen on 2017/9/24.
  */
 @SuppressLint("SimpleDateFormat")
 object DateUtil {

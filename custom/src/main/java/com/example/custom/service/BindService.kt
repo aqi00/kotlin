@@ -8,7 +8,7 @@ import android.os.Binder
 import android.os.IBinder
 
 /**
- * Created by ouyangshen on 2016/10/14.
+ * Created by ouyangshen on 2017/10/14.
  */
 class BindService : Service() {
     private val mBinder = LocalBinder()
