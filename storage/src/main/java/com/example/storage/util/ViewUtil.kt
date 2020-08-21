@@ -7,7 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 /**
- * Created by ouyangshen on 2016/9/24.
+ * Created by ouyangshen on 2017/9/24.
  */
 object ViewUtil {
 
